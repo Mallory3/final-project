@@ -1,0 +1,17 @@
+<!-- Code syntac for for loop from zellwk.com -->
+  <!-- displays articles title on page (can change .title to see other values in the object) -->
+  <!-- added bootstrap styles like ml-4 (margin-left) to style -->
+  <!-- added logo to header. Loving learning bootstap stying!! -->
+  <h1 class="mt-4 ml-4"><i class="fab fa-earlybirds"></i>  Databird</h1>
+  <h4 class="mt-4 ml-4">Article Blog</h4>
+  <br>
+  <ul id = "list" class="articles">
+      <% for(let i=0; i<display.length; i++ ) {%>
+          <h5 class="text-info"><%= display[i].title %></h5>
+          <p class = article><%= display[i].body %></p>
+        <% } %>
+  </ul>
+  <!-- added margins to button style -->
+  <a href="/posts" class="btn btn-info ml-5 mt-3">Return to List</a>
+  
+  <script src="/js/posts.js"></script>
