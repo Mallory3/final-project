@@ -3,14 +3,14 @@
   <!-- added ml-5 to give it a left margin. Added logo to header. -->
 <h1 class="mt-4 ml-4"><i class="fab fa-earlybirds"></i>  Databird</h1>
 <br>
-<h2 class="lead mb-3 ml-4">Click a Blog Title Below to View the Full Article:</h2>
+<h5 class="mb-3 ml-4 text-info">Click a Blog Title Below to View the Full Article:</h5>
 <br>
   <ul id = "list" class="articles mt-3">
     <% for(let i=0; i<display.length; i++ ) {%>
         <dt>
-          <a href="/posts/<%= display[i].slug %>"><%= display[i].title %></a>
+          <a class="lead" href="/posts/<%= display[i].slug %>"><%= display[i].title %></a>
         </dt>
-        <dd><%= display[i].summary %></dd>
+        <dd class="text-white"><%= display[i].summary %></dd>
       <% } %>
   </ul> 
   <a href="/thankyou" class="btn btn-info ml-5 mt-3">Return Home</a>
