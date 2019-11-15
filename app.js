@@ -79,15 +79,17 @@ app.use((req, res, next) => {
 });
 
 //CACHE MIDDLEWARE
+//TROUBLESHOOTING
 //Created middleware function with tutor(Linden) to solve issue of being able to hit the back button after logging out and access the thankyou page prior to reloading. Middleware function applies to the header of all pages, as seen in the Network tab in dev tools.
 //from https://stackoverflow.com/questions/20429592/no-cache-in-a-nodejs-server
-const nocache = function(req, res, next) {
+const nocache = (req, res, next) => {
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   res.header('Expires', '-1');
   res.header('Pragma', 'no-cache');
   next();
 }
-app.use(nocache)
+//envoke cache middleware
+app.use(nocache);
 
 
 //ROUTES
@@ -100,9 +102,10 @@ app.use('/', require('./routes/article'));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 //catch all 404 errors 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.status(404);
   res.send('404: File Not Found');
+  next()
 });
 
 //create a PORT to run our app on

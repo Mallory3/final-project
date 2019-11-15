@@ -2,16 +2,13 @@
 const express = require('express');
 const router = express.Router();
 
-//bring in Article mongoose scheema
-const Articles = require('../models/Articles');
-
 //bring in authentication module
 const { ensureAuthenticated } = require('../config/auth');
 
 //pass in ensureAuthenticated as a second parameter to ensure the route is protected by bringing in authentication middleware created in /config/auth.js. Add in { name: req.user.name } so when a user is logged in we can dynamically display their name
 //wrapping entire boilerplate in a get request, to access MongoDB database and loop through posted article fixture
 
-// Index Page
+//POST PAGE
 //need to enclose everything in router.get
 //knowledge from https://blog.zingchart.com/
 //ensureAuthenticated makes article blog password protected
@@ -34,7 +31,7 @@ MongoClient.connect(uri,{ useUnifiedTopology: true,useNewUrlParser: true }, func
 
   //Open a connection to an Atlas database called final
    const db = client.db("final");
-   //connect article fixture to the articles collection
+   //connect article fixture to the articles collection in final database
    const artCol = db.collection('articles');
 
    //adding article fixture to database collection
@@ -48,7 +45,7 @@ MongoClient.connect(uri,{ useUnifiedTopology: true,useNewUrlParser: true }, func
 
 // http://zetcode.com/javascript/mongodb/
 // find() creates a cursor for a query that can be used to iterate over results from mongoDB
-//renders title and summary to webpage with ejs for loop in views page
+//renders title and summary to webpage with ejs for loop in views page 'post'
   artCol.find({}).toArray().then((docs) => {
     console.log("found articles for index")
     res.render('posts', { display: docs });
@@ -66,11 +63,13 @@ MongoClient.connect(uri,{ useUnifiedTopology: true,useNewUrlParser: true }, func
    }
    console.log(cursor.insertedCount);
  });
-
   client.close();
 });
 });
 
+
+
+//SLUG
 //ensureAuthenticated makes article blog password protected
 router.get('/posts/:slug', ensureAuthenticated, (req, res) => {
   //Testing
@@ -92,7 +91,7 @@ router.get('/posts/:slug', ensureAuthenticated, (req, res) => {
 
   // http://zetcode.com/javascript/mongodb/
   // find() creates a cursor for a query that can be used to iterate over results from mongoDB and find slug
-  //renders title to webpage
+  //renders docs to post/slug that correspond with the slug clicked with use of for loop on view page
     artCol.find({slug: req.params.slug}).toArray().then((docs) => {
       //testing
       console.log("found articles for slug '"+req.params.slug+"'")
@@ -103,7 +102,7 @@ router.get('/posts/:slug', ensureAuthenticated, (req, res) => {
     })
     client.close();
   });
-  });
+});
 
 
 //export module
