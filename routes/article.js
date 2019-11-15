@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
+//bring in Article mongoose scheema
+const Articles = require('../models/Articles');
+
 //bring in authentication module
 const { ensureAuthenticated } = require('../config/auth');
 
