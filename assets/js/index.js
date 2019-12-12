@@ -4,13 +4,15 @@ function addingSwan() {
   swan.style = `
   height: 90vh;
   max-width: 100%;
-  background-image: url("https://images.unsplash.com/photo-1477132394330-d2376dc4c091?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2372&q=80");
+  background-image: url("/img/puffin.jpeg");
   background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.7;
-  backgound-size: contain;
+  background-position: right;
+  background-size: contain;
+  opacity: 1;
   display: block;
   z-index: -1;
+  position: relative;
+  bottom: 16em;
   `
   document.body.appendChild(swan)
 }
