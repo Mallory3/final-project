@@ -23,8 +23,8 @@ function writeAdviceToPage(text) {
     margin-right: 1em;
     position: relative;
     font-size: 25px;
-    top: 10em;
-    left: 15.5em;
+    top: 13em;
+    left: 8em;
     max-height: 30px;
     min-height: 30px;
     max-width: 30vw;
@@ -85,12 +85,10 @@ background: -webkit-linear-gradient(#f5ac0f, #690909);
 border-radius: 10px;
 width: 150px;
 text-align: center;
-margin: auto;
 padding: .5em;
-position: relative;
-top: 5em;
-right: 10em;
+margin-left: 25%;
 z-index:1;
+margin-top: 10em;
 `
 
 //adding click event to make button work
@@ -112,20 +110,21 @@ fetch(url)
 function addingSwan() {
   let swan = document.createElement('div')
   swan.style = `
-  height: 90vh;
-  max-width: 100%;
+  height: 100vh;
+  min-width: 100%;
   background-image: url("/img/puffin.jpeg");
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
+  background-color: black;
   opacity: 1;
   display: block;
   z-index: -1;
   position: relative;
-  bottom: 13em;
+  bottom: 33em;
   `
   document.body.appendChild(swan)
 }
 
-//envoking swan image function
+//envoking3 swan image function
 addingSwan()
