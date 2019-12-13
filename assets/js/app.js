@@ -24,7 +24,7 @@ function writeAdviceToPage(text) {
     position: relative;
     font-size: 25px;
     top: 13em;
-    left: 8em;
+    left: 8.5em;
     max-height: 30px;
     min-height: 30px;
     max-width: 30vw;
